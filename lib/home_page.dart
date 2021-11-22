@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:untitled5/profile.dart';
+import 'package:untitled5/plan.dart';
+import 'package:untitled5/register.dart';
 
 import 'landing.dart';
-import 'login_page.dart';
+import 'login.dart';
+
 import 'map_page.dart';
 
 class HomePage extends StatelessWidget{
@@ -19,12 +21,9 @@ class home extends StatefulWidget{
   State<StatefulWidget> createState() {
      return _home_state();
   }
-
-
 }
 
 class _home_state extends State<home>{
-
   @override
   void initState() {
     super.initState();
@@ -37,7 +36,7 @@ class _home_state extends State<home>{
           extendBodyBehindAppBar: true,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
-            title: const Text("Title",
+            title: const Text("الصفحة الرئيسية",
             style: TextStyle(
               color: Colors.white,
               fontSize: 25
@@ -46,10 +45,10 @@ class _home_state extends State<home>{
             centerTitle: true,
             leading: IconButton(
               onPressed: (){
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context){
-                      return HomePage();
-                    }));
+                // Navigator.pop(context,
+                //     MaterialPageRoute(builder: (context){
+                //       return HomePage();
+                //     }));
               },
               icon: const Icon(Icons.door_back_door),
               color: Colors.white,
@@ -76,7 +75,7 @@ class _home_state extends State<home>{
               tabs: [
                 Tab(
                   icon: Icon(Icons.home),
-                  text: 'الصفحة الرئيسية',
+                  text: 'الفعاليات',
                 ),
                 Tab(
                   icon: Icon(Icons.map),
@@ -93,8 +92,8 @@ class _home_state extends State<home>{
               ],
             ),
           ),
-          body: TabBarView(children: [landing(), Login(), map_page(),
-           Profile()]),
+          body: TabBarView(children: [landing(), plan(), map_page(),
+           register()]),
         ));
   }
 

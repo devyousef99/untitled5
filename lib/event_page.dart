@@ -6,17 +6,24 @@ import 'package:untitled5/product.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
+import 'artist_page.dart';
 
-class event_page extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Test',
-      home: event(),
-    );
-  }
-}
+// class event_page extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: Scaffold(
+//         extendBodyBehindAppBar: true,
+//         appBar: AppBar(
+//           backgroundColor: Colors.transparent,
+//           title: Text('الفعاليات'),
+//         ),
+//         body: event(),
+//       ),
+//     );
+//   }
+// }
 class event extends StatefulWidget {
   @override
   _EventState createState() => _EventState();
@@ -57,10 +64,12 @@ class _EventState extends State<event> {
   }
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text('الفعاليات'),
+      ),
           body: SingleChildScrollView(
             child: Container(
               decoration: const BoxDecoration(
@@ -70,12 +79,13 @@ class _EventState extends State<event> {
                   )
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: 0.0 , top: 150.0 , right: 0.0 , bottom: 0.0)
+                padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
                 ,
                 child: Column(
                   children: [
                     users !=null
                         ? ListView.builder(
+                      physics: ClampingScrollPhysics(),
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
@@ -105,38 +115,19 @@ class _EventState extends State<event> {
             ),
           ),
 
-        ));
+        );
   }
-
-  final List<Color> kMixedColors = [
-    Color(0xff71A5D7),
-    Color(0xff72CCD4),
-    Color(0xffFBAB57),
-    Color(0xffF8B993),
-    Color(0xff962D17),
-    Color(0xffc657fb),
-    Color(0xfffb8457),
-  ];
-
-  final List<Category> categories = [
-    Category(image: "assets/events.jpeg", name: "Beef"),
-    Category(image: "assets/events.jpeg", name: "Chicken"),
-    Category(image: "assets/events.jpeg", name: "Dessert"),
-    Category(image: "assets/events.jpeg", name: "Lamb"),
-    Category(image: "assets/events.jpeg", name: "Pasta"),
-  ];
   Widget makeItem(String image, tag ,String name) {
     return Hero(
       tag: tag,
       child: GestureDetector(
         onTap: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) =>
-                  Products(image: image, key: null,)));
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => artist()),
+          );
         },
         child: Container(
-          //height: 180,
-          // width: double.infinity,
           padding: EdgeInsets.all(20),
           margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
@@ -177,7 +168,6 @@ class _EventState extends State<event> {
                             ),
                           ),
                         ),
-
                       ],
                     ),
                   ),
@@ -189,10 +179,4 @@ class _EventState extends State<event> {
       ),
     );
   }
-}
-class Category {
-  final String image;
-  final String name;
-
-  Category({@required this.image, @required this.name});
 }

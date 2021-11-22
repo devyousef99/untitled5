@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:untitled5/register.dart';
+import 'package:untitled5/sign_up.dart';
 import 'package:untitled5/splash_screen.dart';
 
 void main() {

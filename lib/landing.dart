@@ -1,3 +1,4 @@
+
 import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -7,13 +8,13 @@ import 'package:untitled5/product.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
+import 'map_page.dart';
 
 class landing_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Test',
       home: landing(),
     );
   }
@@ -61,6 +62,10 @@ class _RegisterState extends State<landing> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            backgroundColor: Colors.transparent,
+          ),
           body: SingleChildScrollView(
             child: Container(
               decoration: const BoxDecoration(
@@ -70,13 +75,14 @@ class _RegisterState extends State<landing> {
                   )
               ),
               child: Padding(
-                padding: EdgeInsets.only(left: 0.0 , top: 150.0 , right: 0.0 , bottom: 0.0)
+                padding: EdgeInsets.only(top: 170.0)
                 ,
                 child: Column(
                   children: [
                     DropdownButton(
                       dropdownColor: Colors.transparent,
                       hint: const Text("وش جوك ؟",style:  TextStyle(
+                        fontSize: 30,
                           color: Colors.white
                       )),
                       value: ValueChoose,
@@ -84,44 +90,44 @@ class _RegisterState extends State<landing> {
                         setState(() {
                           ValueChoose = newValue;
                         });
-                        //   // switch(newValue){
-                        //   //   case "وناسة" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        //   //   case "دندنة" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        //   //   case "تصوير" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        //   //   case "روقان" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        //   //   case "عشوة" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        //   //   case "هشك بسك" :
-                        //   //     Navigator.push(
-                        //   //       context,
-                        //   //       MaterialPageRoute(builder: (context) => map_page()),
-                        //   //     );
-                        //   //     break;
-                        // }
+                          switch(newValue){
+                             case "وناسة" :
+                               Navigator.push(
+                                context,
+                                 MaterialPageRoute(builder: (context) => map_page()),
+                               );
+                               break;
+                                  case "دندنة" :
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(builder: (context) => map_page()),
+                             );
+                               break;
+                             case "تصوير" :
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(builder: (context) => map_page()),
+                               );
+                               break;
+                             case "روقان" :
+                               Navigator.push(
+                                 context,
+                              MaterialPageRoute(builder: (context) => map_page()),
+                               );
+                               break;
+                             case "عشوة" :
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(builder: (context) => map_page()),
+                               );
+                               break;
+                             case "هشك بشك" :
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(builder: (context) => map_page()),
+                               );
+                               break;
+                        }
                       },
                       items: listItem.map((valueItem) {
                         return DropdownMenuItem(
@@ -132,41 +138,42 @@ class _RegisterState extends State<landing> {
                         );
                       }).toList(),
                     ),
-                    users !=null
-                        ? ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) {
-                        final user = users[index];
-                        // const SizedBox(width: 10.0);
-                        // const Padding(
-                        //     padding: EdgeInsets.all(8.0));
-                        return makeItem(
-                          // title: Text(user.firstName),
-                          // leading: Image.network(user.avatar),
-                          // subtitle: Text(user.email),
-                            "assets/events.jpeg",
-                            user.firstName,
-                            user.firstName
-                        );
-                      },
-                      itemCount: users.length,
-                    )
-                        : const Center(
-                      child: Text("No Data", style: TextStyle(
-                          color: Colors.white
-                      ),),
-                    )
+                    MediaQuery.removePadding(
+                      removeTop: true,
+                        context: context,
+                        child:
+                        users !=null
+                            ? ListView.builder(
+                          physics: ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) {
+                            final user = users[index];
+                            //const SizedBox(width: 10.0);
+                            // const Padding(
+                            return makeItem(
+                                "assets/events.jpeg",
+                                user.firstName,
+                                user.lastName,
+                              user.firstName,
+                            );
+                          },
+                          itemCount: users.length,
+                        )
+                            : const Center(
+                          child: Text("No Data", style: TextStyle(
+                              color: Colors.white
+                          ),),
+                        ))
                   ],
                 ),
               ),
             ),
           ),
-
         ));
   }
 
-  Widget makeItem(String image, tag ,String name) {
+  Widget makeItem(String image, tag ,String name , String _name) {
     return Hero(
       tag: tag,
       child: GestureDetector(
@@ -176,10 +183,10 @@ class _RegisterState extends State<landing> {
                   event()));
         },
         child: Container(
-         //height: 180,
+         height: 180,
          // width: double.infinity,
-         padding: EdgeInsets.all(20),
-          margin: const EdgeInsets.only(bottom: 10),
+         padding: EdgeInsets.all(1),
+          margin: const EdgeInsets.only(bottom: 5),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
@@ -190,7 +197,7 @@ class _RegisterState extends State<landing> {
                 BoxShadow(
                     color: Colors.transparent,
                     blurRadius: 10,
-                    offset: Offset(0, 10)
+                    offset: Offset(0, 5)
                 )
               ]
           ),
@@ -203,19 +210,29 @@ class _RegisterState extends State<landing> {
                 children: <Widget>[
                   Expanded(
                     child: Column(
-                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                             Padding(
-                             padding: const EdgeInsets.only(left: 0.0,top: 100,right: 0.0,bottom: 0.0),
+                             padding: const EdgeInsets.only(left: 0.0,top: 50,right: 0.0,bottom: 0.0),
                               child: Center(
-                                child:
-                                Text(
-                                  name,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18.0,
-                                  ),
-                                ),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      name,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                    ),
+                                    Text(
+                                      _name,
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ),
                             ),
                       ],

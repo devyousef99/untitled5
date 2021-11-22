@@ -1,8 +1,12 @@
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/plan.dart';
+
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
+
 
 
 class Products extends StatefulWidget {
@@ -14,9 +18,19 @@ class Products extends StatefulWidget {
 }
 
 class _ShoesState extends State<Products> {
+  bool isLoading = false;
+  HttpService http;
+  ListUserResponse listUserResponse;
+  List<User> users;
 
   @override
+  void initState() {
+    http = HttpService();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
+    final String _data = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       body: SingleChildScrollView(
           child: Hero(
@@ -44,7 +58,13 @@ class _ShoesState extends State<Products> {
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        Navigator.pop(context);
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) =>
+                                plan(),
+                                settings: RouteSettings(
+                                  arguments: _data,
+                                )
+                            ));
                       },
                       child: Container(
                         child: Icon(
@@ -75,11 +95,11 @@ class _ShoesState extends State<Products> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
-                              const Center(
+                               Center(
                                 child:
                                 // users != null
                                   Text(
-                                  "Item",
+                                  _data,
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 50,
@@ -89,8 +109,8 @@ class _ShoesState extends State<Products> {
                           const SizedBox(
                             height: 25,
                           ),
-                          const Text(
-                                "plaplapla",
+                           Text(
+                                _data,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 20),
                               ),
@@ -108,16 +128,16 @@ class _ShoesState extends State<Products> {
                                 child: Center(
                                     child: GestureDetector(
                                         onTap: () {
-                                          // Navigator.push(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //       builder: (context) {
-                                          //     return Payment();
-                                          //   }),
-                                          // );
+                                          Navigator.push(context,
+                                              MaterialPageRoute(builder: (context) =>
+                                                  plan(),
+                                                  settings: RouteSettings(
+                                                    arguments: _data,
+                                                  )
+                                              ));
                                         },
                                         child: const Text(
-                                          'Buy Now',
+                                          'Add to my Plan',
                                           style: TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ))),

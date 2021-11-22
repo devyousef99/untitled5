@@ -1,8 +1,20 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import 'home_page.dart';
+
+
+class SplachScreenPage extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: SplashScreen(),
+    );
+  }
+}
+
+
 
 class SplashScreen extends StatefulWidget {
   @override

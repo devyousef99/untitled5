@@ -6,6 +6,7 @@ import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 
+
 class map_page extends StatefulWidget {
   @override
   map_pageState createState() => map_pageState();
@@ -56,8 +57,9 @@ class map_pageState extends State<map_page> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: Colors.transparent,
+        // title: Text('الخريطة'),
+        elevation: 0.0,
       ),
       body: Stack(
         children: <Widget>[
@@ -72,7 +74,6 @@ class map_pageState extends State<map_page> {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
-
         margin: const EdgeInsets.symmetric(vertical: 20.0),
         height: 150.0,
         child:
