@@ -15,14 +15,12 @@ class Category {
 }
 
 class artistsData {
-  List<Category> _myList = <Category>[
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
-    Category(name: 'name', image: 'assets/log_in.png'),
+  final List<Category> _myList = <Category>[
+    Category(name: 'artist1', image: 'assets/log_in.png'),
+    Category(name: 'artist2', image: 'assets/log_in.png'),
+    Category(name: 'artist3', image: 'assets/log_in.png'),
+    Category(name: 'artist4', image: 'assets/log_in.png'),
+    Category(name: 'artist5', image: 'assets/log_in.png'),
   ];
   List<Category> get myList => _myList;
 }
@@ -196,7 +194,7 @@ class _ArtistsState extends State<artist> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 70.0),
+              padding: const EdgeInsets.only(left: 65.0),
               child: GestureDetector(
                 child: IconButton(
                   icon: const Icon(Icons.add),

@@ -2,28 +2,30 @@ import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled5/home_page.dart';
+import 'package:untitled5/landing.dart';
 import 'package:untitled5/product.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'artist_page.dart';
 
-// class event_page extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: Scaffold(
-//         extendBodyBehindAppBar: true,
-//         appBar: AppBar(
-//           backgroundColor: Colors.transparent,
-//           title: Text('الفعاليات'),
-//         ),
-//         body: event(),
-//       ),
-//     );
-//   }
-// }
+class Category {
+  String name, image;
+  Category({this.name, this.image});
+}
+
+class artistsData {
+  final List<Category> _myList = <Category>[
+    Category(name: 'event1', image: 'assets/log_in.png'),
+    Category(name: 'event2', image: 'assets/log_in.png'),
+    Category(name: 'event3', image: 'assets/log_in.png'),
+    Category(name: 'event4', image: 'assets/log_in.png'),
+    Category(name: 'event5', image: 'assets/log_in.png'),
+  ];
+  List<Category> get myList => _myList;
+}
+
 class event extends StatefulWidget {
   @override
   _EventState createState() => _EventState();
@@ -64,58 +66,64 @@ class _EventState extends State<event> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text('الفعاليات'),
+    List<Category> _artistsList = artistsData().myList;
+    return WillPopScope(
+      onWillPop: ()=>Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => home()),
       ),
-          body: SingleChildScrollView(
-            child: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/home_page.png"),
-                    fit: BoxFit.cover,
-                  )
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
-                ,
-                child: Column(
-                  children: [
-                    users !=null
-                        ? ListView.builder(
-                      physics: ClampingScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      itemBuilder: (context, index) {
-                        final user = users[index];
-                        // const SizedBox(width: 10.0);
-                        // const Padding(
-                        //     padding: EdgeInsets.all(8.0));
-                        return makeItem(
-                          // title: Text(user.firstName),
-                          // leading: Image.network(user.avatar),
-                          // subtitle: Text(user.email),
-                            "assets/events.jpeg",
-                            user.firstName,
-                            user.firstName
-                        );
-                      },
-                      itemCount: users.length,
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: Text('الفعاليات'),
+        ),
+            body: SingleChildScrollView(
+              child: Container(
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/home_page.png"),
+                      fit: BoxFit.cover,
                     )
-                        : const Center(
-                      child: Text("No Data", style: TextStyle(
-                          color: Colors.white
-                      ),),
-                    )
-                  ],
+                ),
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
+                  ,
+                  child: Column(
+                    children: [
+                      ListView.builder(
+                        physics: ClampingScrollPhysics(),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemBuilder: (context, index) {
+                          final event = _artistsList[index];
+                          // const SizedBox(width: 10.0);
+                          // const Padding(
+                          //     padding: EdgeInsets.all(8.0));
+                          return makeItem(
+                            // title: Text(user.firstName),
+                            // leading: Image.network(user.avatar),
+                            // subtitle: Text(user.email),
+                              "assets/events.jpeg",
+                              event.name,
+                              event.name
+                          );
+                        },
+                        itemCount: _artistsList.length,
+                      )
+                      //     : const Center(
+                      //   child: Text("No Data", style: TextStyle(
+                      //       color: Colors.white
+                      //   ),),
+                      // )
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-        );
+          ),
+    );
   }
   Widget makeItem(String image, tag ,String name) {
     return Hero(
