@@ -190,7 +190,7 @@ class _LoginPageState extends State<Login> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(builder: (context) {
-                                  return register();
+                                  return RegisterPage();
                                 }),
                               );
                             },

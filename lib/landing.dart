@@ -10,9 +10,14 @@ import 'map_page.dart';
 class landing_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: landing(),
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: Text('أنشاء حساب'),
+        elevation: 0.0,
+      ),
+      body: landing(),
     );
   }
 }
@@ -58,116 +63,111 @@ class _RegisterState extends State<landing> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-          ),
-          body: SingleChildScrollView(
-            child: Container(
+        home: Container(
               decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage("assets/home_page.png"),
                     fit: BoxFit.cover,
                   )
               ),
-              child: Padding(
-                padding: EdgeInsets.only(top: 170.0)
-                ,
-                child: Column(
-                  children: [
-                    DropdownButton(
-                      dropdownColor: Colors.transparent,
-                      hint: const Text("وش جوك ؟",style:  TextStyle(
-                        fontSize: 30,
-                          color: Colors.white
-                      )),
-                      value: ValueChoose,
-                      onChanged: (newValue) {
-                        setState(() {
-                          ValueChoose = newValue;
-                        });
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 170.0)
+                  ,
+                  child: Column(
+                    children: [
+                      DropdownButton(
+                        dropdownColor: Colors.transparent,
+                        hint: const Text("وش جوك ؟",style:  TextStyle(
+                            fontSize: 30,
+                            color: Colors.white
+                        )),
+                        value: ValueChoose,
+                        onChanged: (newValue) {
+                          setState(() {
+                            ValueChoose = newValue;
+                          });
                           switch(newValue){
-                             case "وناسة" :
-                               Navigator.push(
+                            case "وناسة" :
+                              Navigator.push(
                                 context,
-                                 MaterialPageRoute(builder: (context) => map_page()),
-                               );
-                               break;
-                                  case "دندنة" :
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(builder: (context) => map_page()),
-                             );
-                               break;
-                             case "تصوير" :
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(builder: (context) => map_page()),
-                               );
-                               break;
-                             case "روقان" :
-                               Navigator.push(
-                                 context,
-                              MaterialPageRoute(builder: (context) => map_page()),
-                               );
-                               break;
-                             case "عشوة" :
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(builder: (context) => map_page()),
-                               );
-                               break;
-                             case "هشك بشك" :
-                               Navigator.push(
-                                 context,
-                                 MaterialPageRoute(builder: (context) => map_page()),
-                               );
-                               break;
-                        }
-                      },
-                      items: listItem.map((valueItem) {
-                        return DropdownMenuItem(
-                          value: valueItem,
-                          child: Text(valueItem,style: const TextStyle(
-                              color: Colors.white
-                          ),),
-                        );
-                      }).toList(),
-                    ),
-                    MediaQuery.removePadding(
-                      removeTop: true,
-                        context: context,
-                        child:
-                        users !=null
-                            ? ListView.builder(
-                          physics: ClampingScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            final user = users[index];
-                            //const SizedBox(width: 10.0);
-                            // const Padding(
-                            return makeItem(
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                            case "دندنة" :
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                            case "تصوير" :
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                            case "روقان" :
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                            case "عشوة" :
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                            case "هشك بشك" :
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => map_page()),
+                              );
+                              break;
+                          }
+                        },
+                        items: listItem.map((valueItem) {
+                          return DropdownMenuItem(
+                            value: valueItem,
+                            child: Text(valueItem,style: const TextStyle(
+                                color: Colors.white
+                            ),),
+                          );
+                        }).toList(),
+                      ),
+                      MediaQuery.removePadding(
+                          removeTop: true,
+                          context: context,
+                          child:
+                          users !=null
+                              ? ListView.builder(
+                            physics: ClampingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (context, index) {
+                              final user = users[index];
+                              //const SizedBox(width: 10.0);
+                              // const Padding(
+                              return makeItem(
                                 "assets/events.jpeg",
                                 user.firstName,
                                 user.lastName,
-                              user.firstName,
-                            );
-                          },
-                          itemCount: users.length,
-                        )
-                            : const Center(
-                          child: Text("No Data", style: TextStyle(
-                              color: Colors.white
-                          ),),
-                        ))
-                  ],
+                                user.firstName,
+                              );
+                            },
+                            itemCount: users.length,
+                          )
+                              : const Center(
+                            child: Text("No Data", style: TextStyle(
+                                color: Colors.white
+                            ),),
+                          ))
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ));
+        );
   }
 
   Widget makeItem(String image, tag ,String name , String _name) {

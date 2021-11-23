@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:untitled5/home_page.dart';
 import 'package:untitled5/landing.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
@@ -60,7 +61,7 @@ class map_pageState extends State<map_page> {
     return WillPopScope(
       onWillPop: ()=> Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => landing()),
+        MaterialPageRoute(builder: (context) => home()),
       ),
       child: Scaffold(
         extendBodyBehindAppBar: true,
