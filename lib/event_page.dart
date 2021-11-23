@@ -75,50 +75,49 @@ class _EventState extends State<event> {
           backgroundColor: Colors.transparent,
           title: Text('الفعاليات'),
         ),
-            body: SingleChildScrollView(
-              child: Container(
+            body: Container(
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/home_page.png"),
                       fit: BoxFit.cover,
                     )
                 ),
-                child: Padding(
-                  padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
-                  ,
-                  child: Column(
-                    children: [
-                      ListView.builder(
-                        physics: ClampingScrollPhysics(),
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemBuilder: (context, index) {
-                          final event = _artistsList[index];
-                          // const SizedBox(width: 10.0);
-                          // const Padding(
-                          //     padding: EdgeInsets.all(8.0));
-                          return makeItem(
-                            // title: Text(user.firstName),
-                            // leading: Image.network(user.avatar),
-                            // subtitle: Text(user.email),
-                              "assets/events.jpeg",
-                              event.name,
-                              event.name
-                          );
-                        },
-                        itemCount: _artistsList.length,
-                      )
-                      //     : const Center(
-                      //   child: Text("No Data", style: TextStyle(
-                      //       color: Colors.white
-                      //   ),),
-                      // )
-                    ],
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
+                    ,
+                    child: Column(
+                      children: [
+                        ListView.builder(
+                          physics: ClampingScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          itemBuilder: (context, index) {
+                            final event = _artistsList[index];
+                            // const SizedBox(width: 10.0);
+                            // const Padding(
+                            //     padding: EdgeInsets.all(8.0));
+                            return makeItem(
+                              // title: Text(user.firstName),
+                              // leading: Image.network(user.avatar),
+                              // subtitle: Text(user.email),
+                                "assets/events.jpeg",
+                                event.name,
+                                event.name
+                            );
+                          },
+                          itemCount: _artistsList.length,
+                        )
+                        //     : const Center(
+                        //   child: Text("No Data", style: TextStyle(
+                        //       color: Colors.white
+                        //   ),),
+                        // )
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-
           ),
     );
   }
