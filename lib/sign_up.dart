@@ -37,7 +37,7 @@ class _SignupPageState extends State<Signup> {
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/sign_up.png'), fit: BoxFit.fill),
+                  image: AssetImage('assets/Sign up mdl.png'), fit: BoxFit.fill),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -84,7 +84,9 @@ class _SignupPageState extends State<Signup> {
                                               size: 22.0,
                                             ),
                                             hintText: 'Email Address',
-                                            hintStyle: TextStyle(fontSize: 17.0),
+                                            hintStyle: TextStyle(fontSize: 17.0,
+                                            fontFamily: 'koliko',
+                                            letterSpacing: 2),
                                           ),
                                         ),
                                       ),
@@ -107,11 +109,12 @@ class _SignupPageState extends State<Signup> {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 10.0, horizontal: 40.0),
                                     child: Text(
-                                      'SIGN UP',
+                                      'Sign Up',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20.0,
-                                          fontFamily: 'WorkSansBold'),
+                                          fontFamily: 'koliko',
+                                      letterSpacing: 2),
                                     ),
                                   ),
                                 ),
@@ -184,5 +187,4 @@ class _SignupPageState extends State<Signup> {
       },
     );
   }
-
 }

@@ -54,7 +54,7 @@ class _PlantState extends State<plan> {
       home: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/home_page.png"),
+                image: AssetImage("assets/update homepage.png"),
                 fit: BoxFit.fill,
               )
           ),

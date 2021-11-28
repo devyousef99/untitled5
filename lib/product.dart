@@ -144,6 +144,7 @@ class _ShoesState extends State<Products> {
                                           child: const Text(
                                             'Add to my Plan',
                                             style: TextStyle(
+                                              fontFamily: 'koliko',
                                                 fontWeight: FontWeight.bold),
                                           ))),
                                 ),

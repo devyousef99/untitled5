@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:untitled5/plan.dart';
+import 'package:untitled5/profile.dart';
 import 'package:untitled5/register.dart';
 
 import 'landing.dart';
@@ -36,11 +37,8 @@ class _home_state extends State<home>{
           extendBodyBehindAppBar: true,
           appBar: AppBar(
             backgroundColor: Colors.transparent,
-            title: const Text("الصفحة الرئيسية",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 25
-            ),
+            title: const Text("Home",
+              style: TextStyle(fontSize: 30, fontFamily: 'koliko'),
             ),
             centerTitle: true,
             leading: IconButton(
@@ -74,26 +72,26 @@ class _home_state extends State<home>{
               isScrollable: false,
               tabs: [
                 Tab(
-                  icon: Icon(Icons.home),
-                  text: 'الفعاليات',
+                  icon: Icon(Icons.festival_sharp),
+                  text: 'Events',
                 ),
                 Tab(
-                  icon: Icon(Icons.map),
-                  text: 'خطتي',
+                  icon: Icon(Icons.chrome_reader_mode_rounded),
+                  text: 'My Plan',
                 ),
                 Tab(
-                  icon: Icon(Icons.map),
-                  text: 'الخريطة',
+                  icon: Icon(Icons.map_rounded),
+                  text: 'Map',
                 ),
                 Tab(
-                  icon: Icon(Icons.map),
-                  text: 'الملف الشخصي',
+                  icon: Icon(Icons.account_circle),
+                  text: 'Profile',
                 ),
               ],
             ),
           ),
           body: TabBarView(children: [landing(), plan(), map_page(),
-           register()]),
+           profile()]),
         ));
   }
 

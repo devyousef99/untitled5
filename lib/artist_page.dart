@@ -105,7 +105,10 @@ class _ArtistsState extends State<artist> {
           ),
           title: const Padding(
             padding: EdgeInsets.only(right: 200.0),
-            child: Text('Artists'),
+            child: Text(
+              'Artists',
+              style: TextStyle(fontSize: 26, fontFamily: 'koliko'),
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -158,64 +161,64 @@ class _ArtistsState extends State<artist> {
   }
 
   Widget mylistItem(Category category) => Card(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          width: 183,
-          height: 169,
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(20.0),
-                topLeft: Radius.circular(20.0)),
-            image: DecorationImage(
-              image: AssetImage(category.image),
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        // const SizedBox(
-        //   height: 5,
-        // ),
-        Row(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                category.name,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 20,
-                    fontFamily: 'WorkSansBold',
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 65.0),
-              child: GestureDetector(
-                child: IconButton(
-                  icon: const Icon(Icons.add),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Products(
-                            image: category.image,
-                          ),
-                          settings: RouteSettings(arguments: category)),
-                    );
-                  },
+            Container(
+              width: 183,
+              height: 169,
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(20.0),
+                    topLeft: Radius.circular(20.0)),
+                image: DecorationImage(
+                  image: AssetImage(category.image),
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
+            // const SizedBox(
+            //   height: 5,
+            // ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Text(
+                    category.name,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                      fontFamily: 'koliko',
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 65.0),
+                  child: GestureDetector(
+                    child: IconButton(
+                      icon: const Icon(Icons.add),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Products(
+                                    image: category.image,
+                                  ),
+                              settings: RouteSettings(arguments: category)),
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
-      ],
-    ),
-  );
+      );
 
   Widget makeItem(String image, tag, String name) {
     return Hero(
@@ -266,7 +269,8 @@ class _ArtistsState extends State<artist> {
                               name,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontFamily: 'koliko',
+                                fontSize: 20.0,
                               ),
                             ),
                           ),

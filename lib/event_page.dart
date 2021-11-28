@@ -27,10 +27,11 @@ class event extends StatefulWidget {
   @override
   _EventState createState() => _EventState();
 }
+
 class _EventState extends State<event> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   String ValueChoose;
-  List listItem = ["هشك بشك", "عشوة", "روقان","تصوير","دندنة","وناسة"];
+  List listItem = ["هشك بشك", "عشوة", "روقان", "تصوير", "دندنة", "وناسة"];
   bool CheckBoxValue = false;
   bool isLoading = false;
   HttpService http;
@@ -55,17 +56,19 @@ class _EventState extends State<event> {
       print(e);
     }
   }
+
   @override
   void initState() {
     http = HttpService();
     getListUser();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     List<Category> _artistsList = artistsData().myList;
     return WillPopScope(
-      onWillPop: ()=>Navigator.push(
+      onWillPop: () => Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => home()),
       ),
@@ -73,55 +76,53 @@ class _EventState extends State<event> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: Text('الفعاليات'),
-        ),
-            body: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage("assets/home_page.png"),
-                      fit: BoxFit.cover,
-                    )
-                ),
-                child: SingleChildScrollView(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 0.0 , top: 100.0 , right: 0.0 , bottom: 0.0)
-                    ,
-                    child: Column(
-                      children: [
-                        ListView.builder(
-                          physics: ClampingScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) {
-                            final event = _artistsList[index];
-                            // const SizedBox(width: 10.0);
-                            // const Padding(
-                            //     padding: EdgeInsets.all(8.0));
-                            return makeItem(
-                              // title: Text(user.firstName),
-                              // leading: Image.network(user.avatar),
-                              // subtitle: Text(user.email),
-                                "assets/events.jpeg",
-                                event.name,
-                                event.name
-                            );
-                          },
-                          itemCount: _artistsList.length,
-                        )
-                        //     : const Center(
-                        //   child: Text("No Data", style: TextStyle(
-                        //       color: Colors.white
-                        //   ),),
-                        // )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+          title: const Text(
+            'Events',
+            style: TextStyle(fontSize: 26, fontFamily: 'koliko'),
           ),
+        ),
+        body: Container(
+          color: Colors.black,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                  left: 10.0, top: 10.0, right: 10.0, bottom: 5.0),
+              child: Column(
+                children: [
+                  ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (context, index) {
+                      final event = _artistsList[index];
+                      // const SizedBox(width: 10.0);
+                      // const Padding(
+                      //     padding: EdgeInsets.all(8.0));
+                      return makeItem(
+                          // title: Text(user.firstName),
+                          // leading: Image.network(user.avatar),
+                          // subtitle: Text(user.email),
+                          "assets/events.jpeg",
+                          event.name,
+                          event.name);
+                    },
+                    itemCount: _artistsList.length,
+                  )
+                  //     : const Center(
+                  //   child: Text("No Data", style: TextStyle(
+                  //       color: Colors.white
+                  //   ),),
+                  // )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
-  Widget makeItem(String image, tag ,String name) {
+
+  Widget makeItem(String image, tag, String name) {
     return Hero(
       tag: tag,
       child: GestureDetector(
@@ -132,22 +133,18 @@ class _EventState extends State<event> {
           );
         },
         child: Container(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           margin: const EdgeInsets.only(bottom: 10),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                  image: AssetImage(image),
-                  fit: BoxFit.fill
-              ),
+              image:
+                  DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
               boxShadow: const [
                 BoxShadow(
                     color: Colors.transparent,
                     blurRadius: 10,
-                    offset: Offset(0, 10)
-                )
-              ]
-          ),
+                    offset: Offset(0, 10))
+              ]),
           child: Column(
             // crossAxisAlignment: CrossAxisAlignment.start,
             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -160,14 +157,15 @@ class _EventState extends State<event> {
                       //crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 0.0,top: 100,right: 0.0,bottom: 0.0),
+                          padding: const EdgeInsets.only(
+                              left: 0.0, top: 100, right: 0.0, bottom: 0.0),
                           child: Center(
-                            child:
-                            Text(
+                            child: Text(
                               name,
                               style: const TextStyle(
                                 color: Colors.white,
-                                fontSize: 18.0,
+                                fontFamily: 'koliko',
+                                fontSize: 20.0,
                               ),
                             ),
                           ),
@@ -176,7 +174,7 @@ class _EventState extends State<event> {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

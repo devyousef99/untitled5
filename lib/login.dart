@@ -56,7 +56,7 @@ class _LoginPageState extends State<Login> {
             height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/log_in.png'), fit: BoxFit.fill),
+                  image: AssetImage('assets/Log in mdl.png'), fit: BoxFit.fill),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
@@ -79,13 +79,13 @@ class _LoginPageState extends State<Login> {
                                 ),
                                 child: Container(
                                   width: 300.0,
-                                  height: 190.0,
+                                  height: 250.0,
                                   child: SingleChildScrollView(
                                     child: Column(
                                       children: <Widget>[
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 20.0,
+                                          padding: const EdgeInsets.only(
+                                              top: 26.0,
                                               bottom: 20.0,
                                               left: 25.0,
                                               right: 25.0),
@@ -96,16 +96,19 @@ class _LoginPageState extends State<Login> {
                                             style: const TextStyle(
                                                 fontSize: 16.0,
                                                 color: Colors.black),
-                                            decoration: const InputDecoration(
+                                            decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              icon: Icon(
+                                              icon: const Icon(
                                                 FontAwesomeIcons.at,
                                                 color: Colors.black,
                                                 size: 22.0,
                                               ),
                                               hintText: 'Email Address',
                                               hintStyle:
-                                                  TextStyle(fontSize: 17.0),
+                                                  TextStyle(fontSize: 17.0,
+                                                  fontFamily: 'koliko',
+                                                  color: Colors.grey.shade700,
+                                                  letterSpacing: 2),
                                             ),
                                           ),
                                         ),
@@ -116,7 +119,7 @@ class _LoginPageState extends State<Login> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 20.0,
+                                              top: 10.0,
                                               bottom: 20.0,
                                               left: 25.0,
                                               right: 25.0),
@@ -126,16 +129,19 @@ class _LoginPageState extends State<Login> {
                                             style: const TextStyle(
                                                 fontSize: 16.0,
                                                 color: Colors.black),
-                                            decoration: const InputDecoration(
+                                            decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              icon: Icon(
+                                              icon: const Icon(
                                                 FontAwesomeIcons.lock,
                                                 size: 22.0,
                                                 color: Colors.black,
                                               ),
                                               hintText: 'Password',
                                               hintStyle:
-                                                  TextStyle(fontSize: 17.0),
+                                                  TextStyle(fontSize: 17.0,
+                                                  fontFamily: 'koliko',
+                                                  color: Colors.grey.shade700,
+                                                  letterSpacing: 2),
                                             ),
                                             textInputAction: TextInputAction.go,
                                           ),
@@ -146,7 +152,7 @@ class _LoginPageState extends State<Login> {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(top: 170.0),
+                                margin: const EdgeInsets.only(top: 230.0),
                                 decoration: const BoxDecoration(
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(40.0)),
@@ -158,12 +164,12 @@ class _LoginPageState extends State<Login> {
                                     padding: EdgeInsets.symmetric(
                                         vertical: 10.0, horizontal: 40.0),
                                     child: Text(
-                                      'LOGIN',
+                                      'Login',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 20.0,
                                           letterSpacing: 3,
-                                          fontFamily: 'WorkSansBold'),
+                                          fontFamily: 'koliko'),
                                     ),
                                   ),
                                 ),
@@ -174,14 +180,14 @@ class _LoginPageState extends State<Login> {
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextButton(
                               onPressed: () {},
-                              child: const Text(
+                              child: Text(
                                 'Forgot Password?',
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,
-                                    color: Colors.black,
-                                    letterSpacing: 1,
+                                    color: Colors.grey.shade700,
+                                    letterSpacing: 1.5,
                                     fontSize: 15.0,
-                                    fontFamily: 'WorkSansMedium'),
+                                    fontFamily: 'koliko'),
                               ),
                             ),
                           ),
@@ -194,14 +200,14 @@ class _LoginPageState extends State<Login> {
                                 }),
                               );
                             },
-                            child: const Text(
+                            child: Text(
                               'Create Account',
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
-                                  color: Colors.black,
-                                  letterSpacing: 1,
+                                  color: Colors.grey.shade700,
+                                  letterSpacing: 1.5,
                                   fontSize: 15.0,
-                                  fontFamily: 'WorkSansMedium'),
+                                  fontFamily: 'koliko'),
                             ),
                           ),
                         ],
@@ -224,7 +230,7 @@ class _LoginPageState extends State<Login> {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) {
-          return landing_page();
+          return home();
         }),
       );
       //If all data are not valid then start auto validation.
