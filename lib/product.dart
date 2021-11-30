@@ -1,24 +1,19 @@
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/artist_page.dart';
 import 'package:untitled5/plan.dart';
-
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
-
-
-
-class Products extends StatefulWidget {
+///This Page is used how will show the product
+class show_event extends StatefulWidget {
   final String image;
-  const Products({ Key key, this.image}) : super(key: key);
+  const show_event({ Key key, this.image}) : super(key: key);
 
   @override
-  _ShoesState createState() => _ShoesState();
+  _ShowState createState() => _ShowState();
 }
 
-class _ShoesState extends State<Products> {
+class _ShowState extends State<show_event> {
   bool isLoading = false;
   HttpService http;
   ListUserResponse listUserResponse;
@@ -31,14 +26,23 @@ class _ShoesState extends State<Products> {
   }
   @override
   Widget build(BuildContext context) {
+    ///to get the data after action happen in other widget to show the data
+    ///in this page
     final String _data = ModalRoute.of(context).settings.arguments;
+    ///to control the arrow back when clicked!
     return WillPopScope(
       onWillPop: ()=> Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => artist()),
       ),
       child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         body: SingleChildScrollView(
+          /// here is the designed way.!
             child: Hero(
           tag: 'red',
           child: Container(
@@ -55,40 +59,12 @@ class _ShoesState extends State<Products> {
                 ]),
             child: Stack(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 50),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) =>
-                                  plan(),
-                                  settings: RouteSettings(
-                                    arguments: _data,
-                                  )
-                              ));
-                        },
-                        child: Container(
-                          child: Icon(
-                            Icons.arrow_back_ios,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 Positioned(
-                  bottom: 0,
-                  left: 0,
                   width: MediaQuery.of(context).size.width,
                   height: 500,
                   child:
                   Container(
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
                                 begin: Alignment.bottomRight,
@@ -105,7 +81,7 @@ class _ShoesState extends State<Products> {
                                   // users != null
                                     Text(
                                     _data,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 50,
                                         fontWeight: FontWeight.bold),
@@ -116,7 +92,7 @@ class _ShoesState extends State<Products> {
                             ),
                              Text(
                                   _data,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 20),
                                 ),
                             const SizedBox(

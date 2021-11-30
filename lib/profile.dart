@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-import 'landing.dart';
 import '../translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+///Profile Page.
 class profile extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -13,6 +13,7 @@ class profile extends StatefulWidget {
 class _ProfilePageState extends State<profile> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   int _value = 1;
+  ///Date & Calender.
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -29,7 +30,7 @@ class _ProfilePageState extends State<profile> {
             child: child);
       },
     );
-
+    ///Validation for calender
     DateTime endDate = DateTime(2007);
     if (picked != selectedDate && picked.isBefore(endDate)) {
       setState(
@@ -52,6 +53,7 @@ class _ProfilePageState extends State<profile> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      ///this three lines are for language of the app
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -59,6 +61,7 @@ class _ProfilePageState extends State<profile> {
       home: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Form(
+          ///this is key is used in Form to validate the input users.
           key: formkey,
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -81,6 +84,8 @@ class _ProfilePageState extends State<profile> {
                           Stack(
                             alignment: Alignment.topCenter,
                             children: <Widget>[
+                              /// this is the small white box inside the widget
+                              /// that shows all text fields and button.
                               Card(
                                 elevation: 5.0,
                                 color: Colors.white,
@@ -100,6 +105,7 @@ class _ProfilePageState extends State<profile> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Name Field
                                             validator: validateName,
                                             keyboardType: TextInputType.name,
                                             style: const TextStyle(
@@ -130,6 +136,7 @@ class _ProfilePageState extends State<profile> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Last Name Field
                                             validator: validateName,
                                             keyboardType: TextInputType.name,
                                             style: const TextStyle(
@@ -160,6 +167,7 @@ class _ProfilePageState extends State<profile> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Mobile Field
                                             validator: validateMobile,
                                             keyboardType: TextInputType.phone,
                                             style: const TextStyle(
@@ -190,6 +198,7 @@ class _ProfilePageState extends State<profile> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Mail Field
                                             validator: validateEmail,
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -214,6 +223,7 @@ class _ProfilePageState extends State<profile> {
                                           height: 1.0,
                                           color: Colors.grey[400],
                                         ),
+                                        ///Radio Button Field
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 10.0,
@@ -290,6 +300,7 @@ class _ProfilePageState extends State<profile> {
                                             ],
                                           ),
                                         ),
+                                        ///Calender Field
                                         Container(
                                           margin: const EdgeInsets.only(
                                               top: 5.0, left: 7),
@@ -319,6 +330,7 @@ class _ProfilePageState extends State<profile> {
                                             ),
                                           ),
                                         ),
+                                        ///After Calender is set it will show here.
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(top: 10.5),
@@ -338,6 +350,7 @@ class _ProfilePageState extends State<profile> {
                                   ),
                                 ),
                               ),
+                              ///Designed Button
                               Container(
                                 margin: const EdgeInsets.only(top: 545.0),
                                 decoration: const BoxDecoration(
@@ -375,7 +388,7 @@ class _ProfilePageState extends State<profile> {
       ),
     );
   }
-
+  ///To validate all input when button clicked!
   void _validateInput() {
     //If all data are correct then save data to out variables
     if (formkey.currentState.validate()) {
@@ -388,11 +401,8 @@ class _ProfilePageState extends State<profile> {
       );
       //If all data are not valid then start auto validation.
     }
-    // else {
-    // SnackBar(content: Text('data'));
-    //  }
   }
-
+  ///To validate Mobile!
   String validateMobile(String value) {
     if (value.length != 10) {
       return 'Please enter a valid phone number';
@@ -400,7 +410,7 @@ class _ProfilePageState extends State<profile> {
       return null;
     }
   }
-
+  ///To validate Name!
   String validateName(String value) {
     if (value.length < 3) {
       return 'Please enter your name';
@@ -408,7 +418,7 @@ class _ProfilePageState extends State<profile> {
       return null;
     }
   }
-
+  ///To validate Mail!
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';

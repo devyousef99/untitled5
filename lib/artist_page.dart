@@ -10,12 +10,12 @@ import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'event_page.dart';
-
+///Custom Class to show the data.
 class Category {
   String name, image;
   Category({this.name, this.image});
 }
-
+///Custom list to show the data.
 class artistsData {
   final List<Category> _myList = <Category>[
     Category(name: 'artist1', image: 'assets/log_in.png'),
@@ -26,7 +26,7 @@ class artistsData {
   ];
   List<Category> get myList => _myList;
 }
-
+///Artist Page
 class artists_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -51,6 +51,7 @@ class _ArtistsState extends State<artist> {
   String ValueChoose;
   bool CheckBoxValue = false;
   bool isLoading = false;
+  ///API connection.
   HttpService http;
   ListUserResponse listUserResponse;
   List<User> users;
@@ -123,6 +124,7 @@ class _ArtistsState extends State<artist> {
               padding: const EdgeInsets.only(
                   left: 5.0, top: 10.0, right: 5.0, bottom: 0.0),
               child: Column(children: [
+                ///gridView Builder.
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
@@ -164,7 +166,7 @@ class _ArtistsState extends State<artist> {
       ),
     );
   }
-
+  ///this is the design created to show a list of data.!
   Widget mylistItem(Category category) => Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(
@@ -210,7 +212,7 @@ class _ArtistsState extends State<artist> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => Products(
+                              builder: (context) => show_event(
                                     image: category.image,
                                   ),
                               settings: RouteSettings(arguments: category)),
@@ -224,71 +226,4 @@ class _ArtistsState extends State<artist> {
           ],
         ),
       );
-
-  Widget makeItem(String image, tag, String name) {
-    return Hero(
-      tag: tag,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => Products(
-                image: image,
-                key: null,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          //height: 180,
-          // width: double.infinity,
-          padding: const EdgeInsets.all(20),
-          margin: const EdgeInsets.only(bottom: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
-            boxShadow: const [
-              BoxShadow(
-                  color: Colors.transparent,
-                  blurRadius: 10,
-                  offset: Offset(0, 10))
-            ],
-          ),
-          child: Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Row(
-                // crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Expanded(
-                    child: Column(
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 0.0, top: 100, right: 0.0, bottom: 0.0),
-                          child: Center(
-                            child: Text(
-                              name,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'koliko',
-                                fontSize: 20.0,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }

@@ -8,10 +8,12 @@ import 'landing.dart';
 import 'login.dart';
 import 'map_page.dart';
 
+///the app bar with tabs in this page
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      ///this three lines are for language of the app
       supportedLocales: context.supportedLocales,
       localizationsDelegates: context.localizationDelegates,
       locale: context.locale,
@@ -33,7 +35,7 @@ class _home_state extends State<home> {
   void initState() {
     super.initState();
   }
-
+  ///Method created with condition for button langauge.
   Future<void> _validateLanguage() async {
     //If all data are correct then save data to out variables
     if (context.locale == Locale('en')) {
@@ -45,6 +47,7 @@ class _home_state extends State<home> {
 
   @override
   Widget build(BuildContext context) {
+    ///widget is used to show tabs.
     return DefaultTabController(
         length: 4,
         child: Scaffold(

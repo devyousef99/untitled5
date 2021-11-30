@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled5/register.dart';
 
-
+///Sign up page
 class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,8 +12,6 @@ class SignupPage extends StatelessWidget {
     );
   }
 }
-
-
 
 class Signup extends StatefulWidget {
   @override
@@ -27,10 +25,12 @@ class _SignupPageState extends State<Signup> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        ///transparent is used to show the origin of the background
         backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(
         child: Form(
+          ///this is key is used in Form to validate the input users
           key: formkey,
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -52,6 +52,8 @@ class _SignupPageState extends State<Signup> {
                           Stack(
                             alignment: Alignment.center,
                             children: <Widget>[
+                              /// this is the small white box inside the widget
+                              /// that shows all text fields and button
                               Card(
                                 elevation: 5.0,
                                 color: Colors.white,
@@ -94,6 +96,7 @@ class _SignupPageState extends State<Signup> {
                                   ),
                                 ),
                               ),
+                              /// designed button
                               Container(
                                 margin: const EdgeInsets.only(top: 140.0),
                                 decoration: const BoxDecoration(
@@ -133,7 +136,7 @@ class _SignupPageState extends State<Signup> {
       ),
     );
   }
-
+  ///To validate all input when button clicked!
   void _validateInput() {
     //If all data are correct then save data to out variables
     if (formkey.currentState.validate()) {
@@ -150,17 +153,17 @@ class _SignupPageState extends State<Signup> {
       print("Please Check Your Data");
     }
   }
-
+  ///To check the input mail
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     RegExp regex = new RegExp(pattern);
     if (!regex.hasMatch(value))
-      return 'يرجى إدخال بريد الكتروني صحيح';
+      return 'Please Check Your Mail';
     else
       return null;
   }
-
+  ///designed dialog to show t text after button clicked!
   void _showDialog(BuildContext context) {
     showDialog(
       context: context,

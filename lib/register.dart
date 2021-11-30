@@ -5,9 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled5/profile.dart';
 import 'package:untitled5/translations/locale_keys.g.dart';
 import 'home_page.dart';
-import 'landing.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
-
+///Registeration page
 class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,6 +29,7 @@ class register extends StatefulWidget {
 class _RegisterPageState extends State<register> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   int _value = 1;
+  ///Date & Calender
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
@@ -47,7 +46,7 @@ class _RegisterPageState extends State<register> {
             child: child);
       },
     );
-
+    ///Validation for calender
     DateTime endDate = DateTime(2007);
     if (picked != selectedDate && picked.isBefore(endDate)) {
       setState(
@@ -70,6 +69,7 @@ class _RegisterPageState extends State<register> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      ///this three lines are for language of the app
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -77,6 +77,7 @@ class _RegisterPageState extends State<register> {
       home: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Form(
+          ///this is key is used in Form to validate the input users.
           key: formkey,
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -100,6 +101,8 @@ class _RegisterPageState extends State<register> {
                             alignment: Alignment.topCenter,
                             children: <Widget>[
                               Card(
+                                /// this is the small white box inside the widget
+                                /// that shows all text fields and button.
                                 elevation: 5.0,
                                 color: Colors.white,
                                 shape: RoundedRectangleBorder(
@@ -118,6 +121,7 @@ class _RegisterPageState extends State<register> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Name_Field
                                             validator: validateName,
                                             keyboardType: TextInputType.name,
                                             style: const TextStyle(
@@ -148,6 +152,7 @@ class _RegisterPageState extends State<register> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Last_Name Field
                                             validator: validateName,
                                             keyboardType: TextInputType.name,
                                             style: const TextStyle(
@@ -178,6 +183,7 @@ class _RegisterPageState extends State<register> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Mobile Field
                                             validator: validateMobile,
                                             keyboardType: TextInputType.phone,
                                             style: const TextStyle(
@@ -208,6 +214,7 @@ class _RegisterPageState extends State<register> {
                                               left: 40.0,
                                               right: 25.0),
                                           child: TextFormField(
+                                            ///Mail Field
                                             validator: validateEmail,
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -238,6 +245,7 @@ class _RegisterPageState extends State<register> {
                                               bottom: 10.0,
                                               left: 10.0,
                                               right: 25.0),
+                                          ///Radio button
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -288,6 +296,7 @@ class _RegisterPageState extends State<register> {
                                           height: 1.0,
                                           color: Colors.grey[400],
                                         ),
+                                        ///Here is where the calender is show
                                         Padding(
                                           padding: const EdgeInsets.only(
                                               top: 15.0,
@@ -337,6 +346,7 @@ class _RegisterPageState extends State<register> {
                                             ),
                                           ),
                                         ),
+                                        ///After Calender is set it will show here.
                                         Padding(
                                           padding:
                                               const EdgeInsets.only(top: 10.5),
@@ -356,6 +366,7 @@ class _RegisterPageState extends State<register> {
                                   ),
                                 ),
                               ),
+                              ///Designed Button
                               Container(
                                 margin: const EdgeInsets.only(top: 545.0),
                                 decoration: const BoxDecoration(
@@ -393,7 +404,7 @@ class _RegisterPageState extends State<register> {
       ),
     );
   }
-
+  ///To validate all input when button clicked!
   void _validateInput() {
     //If all data are correct then save data to out variables
     if (formkey.currentState.validate()) {
@@ -406,11 +417,8 @@ class _RegisterPageState extends State<register> {
       );
       //If all data are not valid then start auto validation.
     }
-    // else {
-    // SnackBar(content: Text('data'));
-    //  }
   }
-
+  ///To validate Mobile.
   String validateMobile(String value) {
     if (value.length != 10) {
       return 'Please enter a valid phone number';
@@ -418,7 +426,7 @@ class _RegisterPageState extends State<register> {
       return null;
     }
   }
-
+  ///To validate Name.
   String validateName(String value) {
     if (value.length < 3) {
       return 'Please enter your name';
@@ -426,7 +434,7 @@ class _RegisterPageState extends State<register> {
       return null;
     }
   }
-
+  ///To validate Mail.
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
