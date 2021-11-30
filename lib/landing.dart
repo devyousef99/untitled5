@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:dio/dio.dart';
+import '../translations/locale_keys.g.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/event_page.dart';
+import 'package:untitled5/translations/locale_keys.g.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
@@ -15,7 +18,14 @@ class landing extends StatefulWidget {
 class _RegisterState extends State<landing> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   String ValueChoose;
-  List listItem = ["Mingle", "Listen", "Photo Spots", "Eat", "Dance", "Chill"];
+  List listItem = [
+    LocaleKeys.mingle_landing.tr(),
+    LocaleKeys.Listen_landing.tr(),
+    LocaleKeys.PhotoSpots_landing.tr(),
+    LocaleKeys.Chill_landing.tr(),
+    LocaleKeys.Eat_landing.tr(),
+    LocaleKeys.Dance_landing.tr(),
+  ];
   bool CheckBoxValue = false;
   bool isLoading = false;
   HttpService http;
@@ -64,9 +74,9 @@ class _RegisterState extends State<landing> {
               children: [
                 DropdownButton(
                   dropdownColor: Colors.transparent,
-                  hint: const Text(
-                    "What Are You In The Mood For ?",
-                    style: TextStyle(
+                  hint: Text(
+                    LocaleKeys.dropDownButton_landing.tr(),
+                    style: const TextStyle(
                         fontSize: 25,
                         color: Colors.white,
                         fontFamily: 'koliko'),

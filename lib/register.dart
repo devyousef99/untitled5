@@ -1,7 +1,9 @@
 import 'dart:ui';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/profile.dart';
+import 'package:untitled5/translations/locale_keys.g.dart';
 import 'home_page.dart';
 import 'landing.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -13,7 +15,7 @@ class RegisterPage extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Create Account'),
+        title: Text(LocaleKeys.createAccount_loginPage.tr()),
         elevation: 0.0,
       ),
       body: register(),
@@ -36,8 +38,8 @@ class _RegisterPageState extends State<register> {
       initialDate: DateTime.now(),
       firstDate: DateTime(1980, 1),
       lastDate: DateTime.now(),
-      errorFormatText: 'Please enter a valid date',
-      errorInvalidText: 'Please enter a valid date',
+      errorFormatText: LocaleKeys.errorFormatText_profile.tr(),
+      errorInvalidText: LocaleKeys.errorInvalidText_profile.tr(),
       builder: (BuildContext context, Widget child) {
         return Theme(
             data: ThemeData.dark()
@@ -56,8 +58,10 @@ class _RegisterPageState extends State<register> {
       );
     } else {
       final snackBar = SnackBar(
-        content: const Text('Sorry!, you must be 15 years old or over'),
-        action: SnackBarAction(label: 'Undo', onPressed: () {}),
+        content: Text(LocaleKeys.snackBar_message_profile.tr()),
+        action: SnackBarAction(
+            label: LocaleKeys.content_AlertDialog_signup.tr(),
+            onPressed: () {}),
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
@@ -66,6 +70,9 @@ class _RegisterPageState extends State<register> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       debugShowCheckedModeBanner: false,
       home: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -118,7 +125,9 @@ class _RegisterPageState extends State<register> {
                                                 color: Colors.black),
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              label: const Text('First Name'),
+                                              label: Text(
+                                                LocaleKeys.First_Name.tr(),
+                                              ),
                                               labelStyle: TextStyle(
                                                   fontSize: 15.0,
                                                   color: Colors.grey.shade700,
@@ -146,7 +155,9 @@ class _RegisterPageState extends State<register> {
                                                 color: Colors.black),
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              label: const Text('Last Name'),
+                                              label: Text(
+                                                LocaleKeys.Last_Name.tr(),
+                                              ),
                                               labelStyle: TextStyle(
                                                   fontSize: 15.0,
                                                   color: Colors.grey.shade700,
@@ -174,7 +185,9 @@ class _RegisterPageState extends State<register> {
                                                 color: Colors.black),
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              label: const Text('Phone Number'),
+                                              label: Text(
+                                                LocaleKeys.Phone_Number.tr(),
+                                              ),
                                               labelStyle: TextStyle(
                                                   fontSize: 15.0,
                                                   color: Colors.grey.shade700,
@@ -203,8 +216,9 @@ class _RegisterPageState extends State<register> {
                                                 color: Colors.black),
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
-                                              label:
-                                                  const Text('Email Address'),
+                                              label: Text(
+                                                LocaleKeys.Email_Address.tr(),
+                                              ),
                                               labelStyle: TextStyle(
                                                   fontSize: 15.0,
                                                   color: Colors.grey.shade700,
@@ -240,7 +254,7 @@ class _RegisterPageState extends State<register> {
                                                 },
                                               ),
                                               Text(
-                                                'Male',
+                                                LocaleKeys.Male.tr(),
                                                 style: TextStyle(
                                                     fontSize: 16.0,
                                                     color: Colors.grey.shade700,
@@ -259,7 +273,7 @@ class _RegisterPageState extends State<register> {
                                                 },
                                               ),
                                               Text(
-                                                'Female',
+                                                LocaleKeys.Female.tr(),
                                                 style: TextStyle(
                                                     fontSize: 16.0,
                                                     color: Colors.grey.shade700,
@@ -276,61 +290,65 @@ class _RegisterPageState extends State<register> {
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                            top: 15.0,
-                                            bottom: 10.0,
-                                            left: 23.0,
-                                          ),
+                                              top: 15.0,
+                                              bottom: 10.0,
+                                              left: 46.0,
+                                              right: 30.0),
                                           child: Row(
                                             children: [
                                               Text(
-                                                'Date Of Birthday: ',
+                                                LocaleKeys.Date_Of_Birthday
+                                                    .tr(),
                                                 style: TextStyle(
                                                   fontSize: 16.0,
                                                   color: Colors.grey.shade700,
                                                   fontFamily: 'koliko',
                                                 ),
                                               ),
-                                              Container(
-                                                margin: const EdgeInsets.only(
-                                                    top: 5.0, left: 10),
-                                                decoration: const BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                      Radius.circular(40.0),
-                                                    ),
-                                                    color: Colors.black),
-                                                child: MaterialButton(
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onPressed: () =>
-                                                      _selectDate(context),
-                                                  child: const Padding(
-                                                    padding:
-                                                        EdgeInsets.symmetric(
-                                                            vertical: 3.0,
-                                                            horizontal: 3.0),
-                                                    child: Text(
-                                                      'Select date',
-                                                      style: TextStyle(
-                                                          color: Colors.white,
-                                                          fontSize: 15.0,
-                                                          letterSpacing: 2.0,
-                                                          fontFamily: 'koliko'),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
                                             ],
                                           ),
                                         ),
-                                        Text(
-                                          "${selectedDate.toLocal()}"
-                                              .split(' ')[0],
-                                          style: TextStyle(
-                                            color: Colors.grey.shade700,
-                                            fontSize: 16.0,
-                                            fontFamily: 'koliko',
-                                            letterSpacing: 2,
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              top: 5.0, left: 7),
+                                          decoration: const BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(40.0),
+                                              ),
+                                              color: Colors.black),
+                                          child: MaterialButton(
+                                            highlightColor: Colors.transparent,
+                                            onPressed: () =>
+                                                _selectDate(context),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 3.0,
+                                                      horizontal: 3.0),
+                                              child: Text(
+                                                LocaleKeys.Select_date_Button
+                                                    .tr(),
+                                                style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 15.0,
+                                                    letterSpacing: 2.0,
+                                                    fontFamily: 'koliko'),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 10.5),
+                                          child: Text(
+                                            "${selectedDate.toLocal()}"
+                                                .split(' ')[0],
+                                            style: TextStyle(
+                                              color: Colors.grey.shade700,
+                                              fontSize: 16.0,
+                                              fontFamily: 'koliko',
+                                              letterSpacing: 2,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -347,12 +365,12 @@ class _RegisterPageState extends State<register> {
                                 child: MaterialButton(
                                   highlightColor: Colors.transparent,
                                   onPressed: _validateInput,
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 10.0, horizontal: 20.0),
                                     child: Text(
-                                      'Save',
-                                      style: TextStyle(
+                                      LocaleKeys.Save_Button.tr(),
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 25.0,
                                           letterSpacing: 2,
@@ -389,8 +407,8 @@ class _RegisterPageState extends State<register> {
       //If all data are not valid then start auto validation.
     }
     // else {
-   // SnackBar(content: Text('data'));
-   //  }
+    // SnackBar(content: Text('data'));
+    //  }
   }
 
   String validateMobile(String value) {

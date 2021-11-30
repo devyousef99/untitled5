@@ -1,9 +1,11 @@
 import 'dart:ui';
 import 'package:dio/dio.dart';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:untitled5/product.dart';
+import 'package:untitled5/translations/locale_keys.g.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
@@ -29,6 +31,9 @@ class artists_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      locale: context.locale,
       debugShowCheckedModeBanner: false,
       title: 'Test',
       home: artist(),
@@ -103,11 +108,11 @@ class _ArtistsState extends State<artist> {
               ),
             ),
           ),
-          title: const Padding(
-            padding: EdgeInsets.only(right: 200.0),
+          title: Padding(
+            padding: const EdgeInsets.only(right: 200.0),
             child: Text(
-              'Artists',
-              style: TextStyle(fontSize: 26, fontFamily: 'koliko'),
+              LocaleKeys.Artists.tr(),
+              style: const TextStyle(fontSize: 26, fontFamily: 'koliko'),
             ),
           ),
         ),

@@ -2,10 +2,31 @@ import 'dart:ui';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/home_page.dart';
+import 'package:untitled5/translations/locale_keys.g.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'artist_page.dart';
+import 'package:easy_localization/src/public_ext.dart';
+
+class Events extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      debugShowCheckedModeBanner: false,
+      title: 'الفعاليات',
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+        ),
+        body: event(),
+      ),
+    );
+  }
+}
 
 class Category {
   String name, image;
@@ -76,9 +97,9 @@ class _EventState extends State<event> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          title: const Text(
-            'Events',
-            style: TextStyle(fontSize: 26, fontFamily: 'koliko'),
+          title: Text(
+          LocaleKeys.Events_page.tr(),
+            style: const TextStyle(fontSize: 26, fontFamily: 'koliko'),
           ),
         ),
         body: Container(

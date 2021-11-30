@@ -1,20 +1,25 @@
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:untitled5/register.dart';
+import 'package:untitled5/translations/locale_keys.g.dart';
 
 import 'home_page.dart';
 import 'landing.dart';
 
-// class LoginPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'تسجيل دخول',
-//       home: Scaffold(
-//         extendBodyBehindAppBar: true,
-//         appBar: AppBar(
+class LoginPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      debugShowCheckedModeBanner: false,
+      title: 'تسجيل دخول',
+      home: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
 //           leading: IconButton(
 //             onPressed: (){
 //               Navigator.pop(context);
@@ -24,12 +29,12 @@ import 'landing.dart';
 //           ),
 //           backgroundColor: Colors.transparent,
 //           title: const Text('تسجيل دخول'),
-//         ),
-//         body: Login(),
-//       ),
-//     );
-//   }
-// }
+            ),
+        body: Login(),
+      ),
+    );
+  }
+}
 
 class Login extends StatefulWidget {
   @override
@@ -45,7 +50,7 @@ class _LoginPageState extends State<Login> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: Text('تسجيل دخول'),
+        title: Text(LocaleKeys.login_page.tr()),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -103,9 +108,10 @@ class _LoginPageState extends State<Login> {
                                                 color: Colors.black,
                                                 size: 22.0,
                                               ),
-                                              hintText: 'Email Address',
-                                              hintStyle:
-                                                  TextStyle(fontSize: 17.0,
+                                              hintText:
+                                                  LocaleKeys.Email_Address.tr(),
+                                              hintStyle: TextStyle(
+                                                  fontSize: 17.0,
                                                   fontFamily: 'koliko',
                                                   color: Colors.grey.shade700,
                                                   letterSpacing: 2),
@@ -136,9 +142,10 @@ class _LoginPageState extends State<Login> {
                                                 size: 22.0,
                                                 color: Colors.black,
                                               ),
-                                              hintText: 'Password',
-                                              hintStyle:
-                                                  TextStyle(fontSize: 17.0,
+                                              hintText:
+                                                  LocaleKeys.Password.tr(),
+                                              hintStyle: TextStyle(
+                                                  fontSize: 17.0,
                                                   fontFamily: 'koliko',
                                                   color: Colors.grey.shade700,
                                                   letterSpacing: 2),
@@ -160,12 +167,12 @@ class _LoginPageState extends State<Login> {
                                 child: MaterialButton(
                                   highlightColor: Colors.transparent,
                                   onPressed: _validateInput,
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 10.0, horizontal: 40.0),
                                     child: Text(
-                                      'Login',
-                                      style: TextStyle(
+                                      LocaleKeys.login_page.tr(),
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 20.0,
                                           letterSpacing: 3,
@@ -181,7 +188,7 @@ class _LoginPageState extends State<Login> {
                             child: TextButton(
                               onPressed: () {},
                               child: Text(
-                                'Forgot Password?',
+                                LocaleKeys.forget_password_button.tr(),
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     color: Colors.grey.shade700,
@@ -201,7 +208,7 @@ class _LoginPageState extends State<Login> {
                               );
                             },
                             child: Text(
-                              'Create Account',
+                              LocaleKeys.createAccount_loginPage.tr(),
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: Colors.grey.shade700,
