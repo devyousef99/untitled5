@@ -9,7 +9,7 @@ import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'map_page.dart';
-/// This page will show after splash Screen is finish.
+// This page will show after splash Screen is finish.
 class landing extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
@@ -18,7 +18,7 @@ class landing extends StatefulWidget {
 class _RegisterState extends State<landing> {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   String ValueChoose;
-  ///list of translation items.
+  //list of translation items.
   List listItem = [
     LocaleKeys.mingle_landing.tr(),
     LocaleKeys.Listen_landing.tr(),
@@ -29,7 +29,7 @@ class _RegisterState extends State<landing> {
   ];
   bool CheckBoxValue = false;
   bool isLoading = false;
-  ///API Connection.
+  //API Connection.
   HttpService http;
   ListUserResponse listUserResponse;
   List<User> users;
@@ -172,7 +172,7 @@ class _RegisterState extends State<landing> {
       ),
     );
   }
-  ///this is the design created to show a list of data.!
+  //this is the design created to show a list of data.!
   Widget makeItem(String image, tag, String name, String _name) {
     return Hero(
       tag: tag,

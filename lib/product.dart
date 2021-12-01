@@ -4,7 +4,7 @@ import 'package:untitled5/plan.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
-///This Page is used how will show the product
+//This Page is used how will show the product
 class show_event extends StatefulWidget {
   final String image;
   const show_event({ Key key, this.image}) : super(key: key);
@@ -26,10 +26,10 @@ class _ShowState extends State<show_event> {
   }
   @override
   Widget build(BuildContext context) {
-    ///to get the data after action happen in other widget to show the data
-    ///in this page
+    //to get the data after action happen in other widget to show the data
+    //in this page
     final String _data = ModalRoute.of(context).settings.arguments;
-    ///to control the arrow back when clicked!
+    //to control the arrow back when clicked!
     return WillPopScope(
       onWillPop: ()=> Navigator.push(
         context,
@@ -42,15 +42,15 @@ class _ShowState extends State<show_event> {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          /// here is the designed way.!
+          // here is the designed way.!
             child: Hero(
           tag: 'red',
           child: Container(
-            height: MediaQuery.of(context).size.height,
+            height: double.infinity,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(widget.image), fit: BoxFit.cover),
+                    image: AssetImage(widget.image), fit: BoxFit.fill),
                 boxShadow: const [
                   BoxShadow(
                       color: Colors.grey,
@@ -61,7 +61,7 @@ class _ShowState extends State<show_event> {
               children: <Widget>[
                 Positioned(
                   width: MediaQuery.of(context).size.width,
-                  height: 500,
+                  height: double.infinity,
                   child:
                   Container(
                         padding: const EdgeInsets.all(20),

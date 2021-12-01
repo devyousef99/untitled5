@@ -8,12 +8,12 @@ import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'artist_page.dart';
 import 'package:easy_localization/src/public_ext.dart';
-///Events Page
+//Events Page
 class Events extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      ///this three lines are for language of the app
+      //this three lines are for language of the app
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -33,7 +33,7 @@ class Category {
   String name, image;
   Category({this.name, this.image});
 }
-///Custom list to show the data.
+//Custom list to show the data.
 class artistsData {
   final List<Category> _myList = <Category>[
     Category(name: 'event1', image: 'assets/log_in.png'),
@@ -56,7 +56,7 @@ class _EventState extends State<event> {
   List listItem = ["هشك بشك", "عشوة", "روقان", "تصوير", "دندنة", "وناسة"];
   bool CheckBoxValue = false;
   bool isLoading = false;
-  ///API connection.
+  //API connection.
   HttpService http;
   ListUserResponse listUserResponse;
   List<User> users;
@@ -90,7 +90,7 @@ class _EventState extends State<event> {
   @override
   Widget build(BuildContext context) {
     List<Category> _artistsList = artistsData().myList;
-    ///to control the arrow back when clicked!
+    //to control the arrow back when clicked!
     return WillPopScope(
       onWillPop: () => Navigator.push(
         context,
@@ -140,7 +140,7 @@ class _EventState extends State<event> {
       ),
     );
   }
-  ///this is the design created to show a list of data.!
+  //this is the design created to show a list of data.!
   Widget makeItem(String image, tag, String name) {
     return Hero(
       tag: tag,

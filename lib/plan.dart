@@ -1,25 +1,21 @@
 import 'dart:ui';
+import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled5/artist_page.dart';
-///plan page ofr the user.
+//plan page ofr the user.
 class PlanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    ///to control the arrow back when clicked!
-    return WillPopScope(
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            backgroundColor: Colors.transparent,
-            title: Text('My Plan'),
-          ),
-          body: plan(),
-        ),
-        onWillPop: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => artist()),
-            ));
+    //to control the arrow back when clicked!
+    return MaterialApp(
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      locale: context.locale,
+      debugShowCheckedModeBanner: false,
+      title: 'Test',
+      home: plan(),
+    );
   }
 }
 
@@ -39,29 +35,36 @@ class _PlantState extends State<plan> {
   @override
   Widget build(BuildContext context) {
     final String _data = ModalRoute.of(context).settings.arguments;
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage("assets/update homepage.png"),
-          fit: BoxFit.fill,
-        )),
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(top: 190),
-            child: Column(
-              children: [
-                const Text("My Plan",
-                    style: TextStyle(fontSize: 25, color: Colors.white)),
-              ],
+    return WillPopScope(
+      onWillPop: ()=> Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => artist()),
+      ),
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(backgroundColor: Colors.transparent),
+        body: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage("assets/update homepage.png"),
+              fit: BoxFit.fill,
+            )),
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(top: 190),
+                child: Column(
+                  children: [
+                    const Text("My Plan",
+                        style: TextStyle(fontSize: 25, color: Colors.white)),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
       ),
     );
   }
-  ///this is the design created to show a list of data.!
+  //this is the design created to show a list of data.!
   Widget makeItem(String image, tag, String name, String _name) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),

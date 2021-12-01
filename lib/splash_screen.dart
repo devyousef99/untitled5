@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'home_page.dart';
-///This page is only for the splash Screen
+//This page is only for the splash Screen
 class SplachScreenPage extends StatelessWidget {
 
   @override
@@ -29,17 +29,17 @@ class StartState extends State<SplashScreen> {
     super.initState();
     startTimer();
   }
-  /// The time of the screen will show
+  // The time of the screen will show
   startTimer() async {
     var duration =  const Duration(seconds: 5);
     return Timer(duration, route);
   }
-  /// After the splash screen is finish what will happen
+  // After the splash screen is finish what will happen
   route() {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => home()));
   }
-  ///Control the design of the splash screen
+  //Control the design of the splash screen
   initScreen(BuildContext context){
     return Scaffold(
       body: Center(

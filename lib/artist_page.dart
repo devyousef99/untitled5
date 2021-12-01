@@ -10,12 +10,13 @@ import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
 import 'event_page.dart';
-///Custom Class to show the data.
+
+//Custom Class to show the data.
 class Category {
   String name, image;
   Category({this.name, this.image});
 }
-///Custom list to show the data.
+//Custom list to show the data.
 class artistsData {
   final List<Category> _myList = <Category>[
     Category(name: 'artist1', image: 'assets/log_in.png'),
@@ -26,7 +27,7 @@ class artistsData {
   ];
   List<Category> get myList => _myList;
 }
-///Artist Page
+//Artist Page
 class artists_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class _ArtistsState extends State<artist> {
   String ValueChoose;
   bool CheckBoxValue = false;
   bool isLoading = false;
-  ///API connection.
+  //API connection.
   HttpService http;
   ListUserResponse listUserResponse;
   List<User> users;
@@ -124,7 +125,7 @@ class _ArtistsState extends State<artist> {
               padding: const EdgeInsets.only(
                   left: 5.0, top: 10.0, right: 5.0, bottom: 0.0),
               child: Column(children: [
-                ///gridView Builder.
+                //gridView Builder.
                 GridView.builder(
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
@@ -166,7 +167,7 @@ class _ArtistsState extends State<artist> {
       ),
     );
   }
-  ///this is the design created to show a list of data.!
+  //this is the design created to show a list of data.!
   Widget mylistItem(Category category) => Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(
@@ -215,7 +216,7 @@ class _ArtistsState extends State<artist> {
                               builder: (context) => show_event(
                                     image: category.image,
                                   ),
-                              settings: RouteSettings(arguments: category)),
+                              settings: RouteSettings(arguments: category.toString())),
                         );
                       },
                     ),

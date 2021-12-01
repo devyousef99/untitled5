@@ -7,21 +7,21 @@ import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/translations/codegen_loader.g.dart';
 
 Future<void> main() async {
-  ///To initilaized the localization for the hole app.
+  //To initilaized the localization for the hole app.
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
   runApp(
-    ///This widget is used to declare the language that will be used in app.!
+    //This widget is used to declare the language that will be used in app.!
     EasyLocalization(
       path: 'assets/translations',
       supportedLocales: const [
         Locale('en'),
         Locale('ar'),
       ],
-      ///If non of the listed language is shown be default will show English
+      //If non of the listed language is shown be default will show English
       fallbackLocale: Locale('en'),
-      ///To load the translation language file.!
+      //To load the translation language file.!
       assetLoader: CodegenLoader(),
       child: MyApp(),
     ),

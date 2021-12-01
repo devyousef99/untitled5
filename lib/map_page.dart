@@ -6,7 +6,7 @@ import 'package:untitled5/home_page.dart';
 import 'HTTP/http_service.dart';
 import 'HTTP/list_user_response.dart';
 import 'HTTP/user.dart';
-///Map page
+//Map page
 class map_page extends StatefulWidget {
   @override
   map_pageState createState() => map_pageState();
@@ -20,7 +20,7 @@ class map_pageState extends State<map_page> {
   HttpService http;
   ListUserResponse listUserResponse;
   List<User> users;
-  /// to get the data form API assigned into a list.
+  // to get the data form API assigned into a list.
   Future getListUser() async {
     Response response;
     try {
@@ -44,16 +44,16 @@ class map_pageState extends State<map_page> {
   @override
   void initState() {
     http = HttpService();
-    ///the list is build a the begin
+    //the list is build a the begin
     getListUser();
     super.initState();
   }
 
-  // double zoomVal = 5.0;
+  double zoomVal = 5.0;
 
   @override
   Widget build(BuildContext context) {
-    ///to control the arrow back when clicked!
+    //to control the arrow back when clicked!
     return WillPopScope(
       onWillPop: ()=> Navigator.push(
         context,
@@ -67,7 +67,7 @@ class map_pageState extends State<map_page> {
         ),
         body: Stack(
           children: <Widget>[
-            ///for showing the map and the widget two method are created.!
+            //for showing the map and the widget two method are created.!
             _buildGoogleMap(context),
             _buildContainer(),
           ],
@@ -75,14 +75,14 @@ class map_pageState extends State<map_page> {
       ),
     );
   }
-  /// custom container is build here
+  // custom container is build here
   Widget _buildContainer() {
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
           margin: const EdgeInsets.symmetric(vertical: 20.0),
           height: 150.0,
-          /// list builder the get the data from API as a list
+          // list builder the get the data from API as a list
           child: users != null
               ? ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -105,7 +105,7 @@ class map_pageState extends State<map_page> {
                 )),
     );
   }
-  ///Design is created to show the list of data
+  //Design is created to show the list of data
   Widget _boxes(String _id, String First,  String mail,
       String Last, double lat, double long) {
     return GestureDetector(
@@ -197,7 +197,7 @@ class map_pageState extends State<map_page> {
       ],
     );
   }
-  ///here is the widget is used to show the map on the app.!
+  //here is the widget is used to show the map on the app.!
   Widget _buildGoogleMap(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height,
@@ -214,7 +214,7 @@ class map_pageState extends State<map_page> {
       ),
     );
   }
-  ///This method is used to get the location when item is clicked.!
+  //This method is used to get the location when item is clicked.!
   Future<void> _gotoLocation(double lat, double long) async {
     setState(() {
       markers.clear();

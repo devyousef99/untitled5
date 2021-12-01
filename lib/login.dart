@@ -7,12 +7,12 @@ import 'package:untitled5/translations/locale_keys.g.dart';
 
 import 'home_page.dart';
 import 'landing.dart';
-///Login Page
+//Login Page
 class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      ///this three lines are for language of the app
+      //this three lines are for language of the app
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
@@ -46,7 +46,7 @@ class _LoginPageState extends State<Login> {
       ),
       body: SingleChildScrollView(
         child: Form(
-          ///this is key is used in Form to validate the input users.
+          //this is key is used in Form to validate the input users.
           key: formkey,
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -68,8 +68,8 @@ class _LoginPageState extends State<Login> {
                           Stack(
                             alignment: Alignment.topCenter,
                             children: <Widget>[
-                              /// this is the small white box inside the widget
-                              /// that shows all text fields and button.
+                              // this is the small white box inside the widget
+                              // that shows all text fields and button.
                               Card(
                                 elevation: 5.0,
                                 color: Colors.white,
@@ -89,7 +89,7 @@ class _LoginPageState extends State<Login> {
                                               left: 25.0,
                                               right: 25.0),
                                           child: TextFormField(
-                                            ///Mail Field.
+                                            //Mail Field.
                                             validator: validateEmail,
                                             keyboardType:
                                                 TextInputType.emailAddress,
@@ -125,7 +125,7 @@ class _LoginPageState extends State<Login> {
                                               left: 25.0,
                                               right: 25.0),
                                           child: TextFormField(
-                                            ///Mobile Field.
+                                            //Mobile Field.
                                             validator: validateMobile,
                                             obscureText: true,
                                             style: const TextStyle(
@@ -154,7 +154,7 @@ class _LoginPageState extends State<Login> {
                                   ),
                                 ),
                               ),
-                              ///Button Field.
+                              //Button Field.
                               Container(
                                 margin: const EdgeInsets.only(top: 230.0),
                                 decoration: const BoxDecoration(
@@ -180,7 +180,7 @@ class _LoginPageState extends State<Login> {
                               )
                             ],
                           ),
-                          ///Text For Forget Password.
+                          //Text For Forget Password.
                           Padding(
                             padding: const EdgeInsets.only(top: 10.0),
                             child: TextButton(
@@ -196,7 +196,7 @@ class _LoginPageState extends State<Login> {
                               ),
                             ),
                           ),
-                          /// Text for creating account for new user.
+                          // Text for creating account for new user.
                           TextButton(
                             onPressed: () {
                               Navigator.push(
@@ -228,7 +228,7 @@ class _LoginPageState extends State<Login> {
       ),
     );
   }
-  ///To validate all input when button clicked!
+  //To validate all input when button clicked!
   void _validateInput() {
     //If all data are correct then save data to out variables
     if (formkey.currentState.validate()) {
@@ -244,7 +244,7 @@ class _LoginPageState extends State<Login> {
       SnackBar(content: Text('data'));
     }
   }
-  ///To validate Mail!
+  //To validate Mail!
   String validateEmail(String value) {
     Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
@@ -254,7 +254,7 @@ class _LoginPageState extends State<Login> {
     else
       return null;
   }
-  ///To validate Mobile!
+  //To validate Mobile!
   String validateMobile(String value) {
     if (value.length != 10)
       return 'يرجى إدخال رقم جوال صحيح';
