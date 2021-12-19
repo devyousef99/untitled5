@@ -1,13 +1,13 @@
 import 'dart:ui';
 import 'package:dio/dio.dart';
-import '../translations/locale_keys.g.dart';
+import '../../translations/locale_keys.g.dart';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/event_page.dart';
 import 'package:untitled5/translations/locale_keys.g.dart';
-import 'HTTP/http_service.dart';
-import 'HTTP/list_user_response.dart';
-import 'HTTP/user.dart';
+import '../HTTP/http_service.dart';
+import '../HTTP/list_user_response.dart';
+import '../HTTP/user.dart';
+import 'event_page.dart';
 import 'map_page.dart';
 // This page will show after splash Screen is finish.
 class landing extends StatefulWidget {
@@ -190,7 +190,7 @@ class _RegisterState extends State<landing> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               image:
-                  DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
+              DecorationImage(image: AssetImage(image), fit: BoxFit.fill),
               boxShadow: const [
                 BoxShadow(
                     color: Colors.transparent,
@@ -213,23 +213,23 @@ class _RegisterState extends State<landing> {
                               left: 0.0, top: 50, right: 0.0, bottom: 0.0),
                           child: Center(
                               child: Column(
-                            children: [
-                              Text(
-                                name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                              Text(
-                                _name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 18.0,
-                                ),
-                              ),
-                            ],
-                          )),
+                                children: [
+                                  Text(
+                                    name,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                  Text(
+                                    _name,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                    ),
+                                  ),
+                                ],
+                              )),
                         ),
                       ],
                     ),

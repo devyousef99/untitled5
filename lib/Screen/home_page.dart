@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/plan.dart';
-import 'package:untitled5/profile.dart';
-import '../translations/locale_keys.g.dart';
+import 'package:untitled5/Screen/plan.dart';
+import 'package:untitled5/Screen/profile.dart';
+import '../../translations/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'landing.dart';
 import 'login.dart';

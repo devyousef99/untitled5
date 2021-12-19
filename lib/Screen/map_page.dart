@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:untitled5/home_page.dart';
-import 'HTTP/http_service.dart';
-import 'HTTP/list_user_response.dart';
-import 'HTTP/user.dart';
+import 'package:untitled5/Screen/home_page.dart';
+import '../HTTP/http_service.dart';
+import '../HTTP/list_user_response.dart';
+import '../HTTP/user.dart';
 //Map page
 class map_page extends StatefulWidget {
   @override

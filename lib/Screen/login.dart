@@ -2,11 +2,10 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled5/register.dart';
+import 'package:untitled5/Screen/register.dart';
 import 'package:untitled5/translations/locale_keys.g.dart';
-
 import 'home_page.dart';
-import 'landing.dart';
+
 //Login Page
 class LoginPage extends StatelessWidget {
   @override
@@ -21,7 +20,10 @@ class LoginPage extends StatelessWidget {
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
-            ),
+          backgroundColor: Colors.transparent,
+          title: Text(LocaleKeys.login_page.tr()),
+          elevation: 0.0,
+        ),
         body: Login(),
       ),
     );
@@ -39,11 +41,6 @@ class _LoginPageState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(LocaleKeys.login_page.tr()),
-        elevation: 0.0,
-      ),
       body: SingleChildScrollView(
         child: Form(
           //this is key is used in Form to validate the input users.
@@ -228,6 +225,7 @@ class _LoginPageState extends State<Login> {
       ),
     );
   }
+
   //To validate all input when button clicked!
   void _validateInput() {
     //If all data are correct then save data to out variables
@@ -244,6 +242,7 @@ class _LoginPageState extends State<Login> {
       SnackBar(content: Text('data'));
     }
   }
+
   //To validate Mail!
   String validateEmail(String value) {
     Pattern pattern =
@@ -254,6 +253,7 @@ class _LoginPageState extends State<Login> {
     else
       return null;
   }
+
   //To validate Mobile!
   String validateMobile(String value) {
     if (value.length != 10)

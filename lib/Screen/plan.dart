@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/artist_page.dart';
+import 'package:untitled5/Screen/artist_page.dart';
 //plan page ofr the user.
 class PlanPage extends StatelessWidget {
   @override
@@ -44,6 +44,8 @@ class _PlantState extends State<plan> {
         extendBodyBehindAppBar: true,
         appBar: AppBar(backgroundColor: Colors.transparent),
         body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
             decoration: const BoxDecoration(
                 image: DecorationImage(
               image: AssetImage("assets/update homepage.png"),

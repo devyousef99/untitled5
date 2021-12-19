@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'home_page.dart';
+import 'Screen/home_page.dart';
 //This page is only for the splash Screen
 class SplachScreenPage extends StatelessWidget {
 

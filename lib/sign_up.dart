@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled5/register.dart';
+import 'package:untitled5/Screen/register.dart';
 
 //Sign up page
 class SignupPage extends StatelessWidget {

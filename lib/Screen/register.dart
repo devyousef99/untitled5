@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/profile.dart';
+import 'package:untitled5/Screen/profile.dart';
 import 'package:untitled5/translations/locale_keys.g.dart';
 import 'home_page.dart';
 //Registeration page

@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:untitled5/login.dart';
-import 'package:untitled5/register.dart';
+import 'package:untitled5/Screen/login.dart';
+import 'package:untitled5/Screen/register.dart';
 import 'package:untitled5/sign_up.dart';
 import 'package:untitled5/splash_screen.dart';
 import 'package:untitled5/translations/codegen_loader.g.dart';

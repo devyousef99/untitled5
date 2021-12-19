@@ -4,11 +4,11 @@ import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:untitled5/product.dart';
+import 'package:untitled5/Screen/product.dart';
 import 'package:untitled5/translations/locale_keys.g.dart';
-import 'HTTP/http_service.dart';
-import 'HTTP/list_user_response.dart';
-import 'HTTP/user.dart';
+import '../HTTP/http_service.dart';
+import '../HTTP/list_user_response.dart';
+import '../HTTP/user.dart';
 import 'event_page.dart';
 
 //Custom Class to show the data.

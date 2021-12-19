@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled5/artist_page.dart';
-import 'package:untitled5/plan.dart';
-import 'HTTP/http_service.dart';
-import 'HTTP/list_user_response.dart';
-import 'HTTP/user.dart';
+import 'package:untitled5/Screen/artist_page.dart';
+import 'package:untitled5/Screen/plan.dart';
+import '../HTTP/http_service.dart';
+import '../HTTP/list_user_response.dart';
+import '../HTTP/user.dart';
 //This Page is used how will show the product
 class show_event extends StatefulWidget {
   final String image;
@@ -46,11 +46,11 @@ class _ShowState extends State<show_event> {
             child: Hero(
           tag: 'red',
           child: Container(
-            height: double.infinity,
+            height: MediaQuery.of(context).size.height,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(widget.image), fit: BoxFit.fill),
+                    image: AssetImage(widget.image), fit: BoxFit.cover),
                 boxShadow: const [
                   BoxShadow(
                       color: Colors.grey,
@@ -61,7 +61,7 @@ class _ShowState extends State<show_event> {
               children: <Widget>[
                 Positioned(
                   width: MediaQuery.of(context).size.width,
-                  height: double.infinity,
+                  height: MediaQuery.of(context).size.height,
                   child:
                   Container(
                         padding: const EdgeInsets.all(20),
